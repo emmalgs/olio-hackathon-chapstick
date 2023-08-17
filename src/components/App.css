@@ -35,7 +35,7 @@ body {
 
 .description {
   width: 70%;
-  margin: 20px auto;
+  margin: 80px auto 20px auto;
   font-weight: bold;
   background-color: darkgreen;
   color: white;
