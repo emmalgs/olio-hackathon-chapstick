@@ -17,6 +17,22 @@ body {
   background-color: var(--light);
 }
 
+.header {
+  position: fixed;
+  top: 10px;
+  left: 210px;
+  text-transform: uppercase;
+  color: var(--red);
+}
+
+.header-img {
+  width: 200px;
+  border-radius: 50%;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+}
+
 input {
   margin: 10px;
 }

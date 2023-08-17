@@ -1,7 +1,8 @@
 function Header() {
   return (
     <div>
-    <h1>Chef Du Chad</h1>
+    <h1 className="header">Chef Du Chad </h1>
+    <img src="./src/assets/img/chefchad.gif" className='header-img'/>
     </div>
   )
 }
