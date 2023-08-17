@@ -7,6 +7,7 @@ import Result from './Result';
 function ChadController() {
   const [result, setResult] = useState('')
   const [formVisible, setFormVisible] = useState(true);
+  const [image, setImage] = useState('')
 
   const toggleForm = () => {
     setFormVisible(prevState => !prevState)
@@ -27,22 +28,42 @@ function ChadController() {
         }),
       });
       const data = await response.json();
-      console.log(data);
       setResult(data.choices[0].message.content)
-      console.log(result)
       toggleForm();
+      generateImage(result)
     } catch(error) {
       console.log(error);
     }
   }
 
-  const generateImage = async () => {
+  const generateImage = async (userInput) => {
+    try {
     const response = await fetch('https://api.openai.com/v1/images/generations', {
-      prompt: "portland egg scramble",
-      n: 1,
-      size: "256x256",
-      response_format: 'url'
-    })
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        Authorization: `Bearer ${import.meta.env.VITE_API_KEY}`,
+      },
+      body: JSON.stringify({
+        prompt: `${userInput}`,
+        n: 1,
+        size: "256x256",
+        response_format: 'url'
+      })
+    });
+    const output = await response.json();
+    console.log(output)
+    setImage(output.data[0].url)
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+  let currentlyVisible = null;
+  if (formVisible) {
+    currentlyVisible = <Form talkToChad={askChad} />
+  } else {
+    currentlyVisible = <Result message={result} back={toggleForm} img={image}/>
   }
 
   return (

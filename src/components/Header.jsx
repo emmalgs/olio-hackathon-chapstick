@@ -1,6 +1,6 @@
 function Header() {
   return (
-    <h1>Inventor Chad</h1>
+    <h1>Chef Du Chad</h1>
   )
 }
 
