@@ -19,9 +19,8 @@ function Form(props) {
 
   return (
     <div>
-      <p>Enter a location and we will give you a recipe that is as carbon neutral and zero waste as possible. Our recipes are tailored to the available fresh fruits and vegetables in your area</p>
+      <p className="description">Enter a location and we will give you a recipe that is as carbon neutral and zero waste as possible. Our recipes are tailored to the available fresh fruits and vegetables in your area</p>
       <form onSubmit={getResponse}>
-        <label>My location</label>
         <input type="text" name="location" placeholder="Location" />
         <div className="checkboxes">
           <h3>Please select your dietary preferences</h3>
