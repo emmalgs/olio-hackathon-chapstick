@@ -8,7 +8,7 @@ function ChadController() {
   const [result, setResult] = useState('')
   const [formVisible, setFormVisible] = useState(true);
   const [image, setImage] = useState('')
-  const [recipeLoaded, setRecipeLoaded] = useState(false);
+  // const [recipeLoaded, setRecipeLoaded] = useState(false);
 
   const toggleForm = () => {
     setFormVisible(prevState => !prevState)
@@ -24,14 +24,14 @@ function ChadController() {
         body: JSON.stringify({
           model: 'gpt-3.5-turbo',
           messages: [{role: 'system', content:
-        "You are a really mean girl but you are passionate about sustainability and you generate recipes that are carbon neutral or zero waste"}, {role: 'user', content: `${userInput}`}]
+        "You are a fancy chef with helpful ideas and you keep it short and sassy"}, {role: 'user', content: `${userInput}`}]
         }),
       })
       .then((response) => response.json())
       .then((data) => {
         setResult(data.choices[0].message.content)
         toggleForm();
-        setRecipeLoaded(true)
+        // setRecipeLoaded(true)
         return data.choices[0].message.content
       })
       .then((resp) => {

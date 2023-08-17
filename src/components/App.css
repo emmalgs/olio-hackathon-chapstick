@@ -20,3 +20,16 @@ body {
 input {
   margin: 10px;
 }
+
+.checkboxes {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  margin: auto;
+  align-items: space-between;
+}
+
+.check-line {
+  display: flex;
+  justify-content: space-between;
+}
