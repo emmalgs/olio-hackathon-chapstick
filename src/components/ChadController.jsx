@@ -8,14 +8,14 @@ function ChadController() {
   const [result, setResult] = useState('')
   const [formVisible, setFormVisible] = useState(true);
   const [image, setImage] = useState('')
+  const [recipeLoaded, setRecipeLoaded] = useState(false);
 
   const toggleForm = () => {
     setFormVisible(prevState => !prevState)
   }
 
   const askChad = async(userInput) => {
-    try {
-      const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',
         headers: {
           'content-type': 'application/json',
@@ -26,18 +26,26 @@ function ChadController() {
           messages: [{role: 'system', content:
         "You are a really mean girl but you are passionate about sustainability and you generate recipes that are carbon neutral or zero waste"}, {role: 'user', content: `${userInput}`}]
         }),
-      });
-      const data = await response.json();
-      setResult(data.choices[0].message.content)
-      toggleForm();
-      generateImage(result)
-    } catch(error) {
+      })
+      .then((response) => response.json())
+      .then((data) => {
+        setResult(data.choices[0].message.content)
+        toggleForm();
+        setRecipeLoaded(true)
+        return data.choices[0].message.content
+      })
+      .then((resp) => {
+        const title = resp.slice(0, 100)
+        generateImage(title)
+    })
+      .catch((error) => {
       console.log(error);
-    }
+    });
   }
 
-  const generateImage = async (userInput) => {
+  const generateImage = async (input) => {
     try {
+    console.log(input)
     const response = await fetch('https://api.openai.com/v1/images/generations', {
       method: 'POST',
       headers: {
@@ -45,7 +53,7 @@ function ChadController() {
         Authorization: `Bearer ${import.meta.env.VITE_API_KEY}`,
       },
       body: JSON.stringify({
-        prompt: `${userInput}`,
+        prompt: `${input}`,
         n: 1,
         size: "256x256",
         response_format: 'url'

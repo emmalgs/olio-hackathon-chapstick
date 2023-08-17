@@ -1,8 +1,6 @@
 import PropTypes from 'prop-types'
 
 function Result(props) {
-  const paragraphs = props.message.split('/n')
-  console.log(paragraphs)
   return (
     <div>
       <img src={props.img} alt="an image"/>
