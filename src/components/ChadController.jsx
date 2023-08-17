@@ -3,6 +3,7 @@ import Form from './Form';
 import Result from './Result';
 
 
+
 function ChadController() {
   const [result, setResult] = useState('')
   const [formVisible, setFormVisible] = useState(true);
@@ -22,7 +23,7 @@ function ChadController() {
         body: JSON.stringify({
           model: 'gpt-3.5-turbo',
           messages: [{role: 'system', content:
-        "You are a wacky but hopeful future inventor of sustainable inventions"}, {role: 'user', content: `${userInput}`}]
+        "You are a really mean girl but you are passionate about sustainability and you generate recipes that are carbon neutral or zero waste"}, {role: 'user', content: `${userInput}`}]
         }),
       });
       const data = await response.json();
@@ -35,11 +36,13 @@ function ChadController() {
     }
   }
 
-  let currentlyVisible = null;
-  if (formVisible) {
-    currentlyVisible = <Form talkToChad={askChad}/>
-  } else {
-    currentlyVisible = <Result back={toggleForm} message={result} />
+  const generateImage = async () => {
+    const response = await fetch('https://api.openai.com/v1/images/generations', {
+      prompt: "portland egg scramble",
+      n: 1,
+      size: "256x256",
+      response_format: 'url'
+    })
   }
 
   return (
