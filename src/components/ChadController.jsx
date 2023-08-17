@@ -29,7 +29,9 @@ function ChadController() {
       })
       .then((response) => response.json())
       .then((data) => {
-        setResult(data.choices[0].message.content)
+        const recipe = data.choices[0].message.content;
+        const recipeArray = recipe.split('\n')
+        setResult(recipeArray)
         toggleForm();
         // setRecipeLoaded(true)
         return data.choices[0].message.content

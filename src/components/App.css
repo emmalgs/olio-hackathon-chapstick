@@ -49,3 +49,28 @@ input {
   display: flex;
   justify-content: space-between;
 }
+
+.cooked-food {
+  margin: 20px;
+  margin-top: 80px;
+  border: 10px solid darkgreen;
+}
+
+.recipe {
+  text-align: left;
+  width: 600px;
+  background-color: #F0B67F;
+  padding: 30px;
+  border-radius: 20px;
+  margin: 20px;
+}
+
+.recipe p:first-child {
+  background-color: var(--red);
+  padding: 20px;
+  border-radius: 20px;
+  color: white;
+  font-size: 40px;
+  text-align: center;
+}
+

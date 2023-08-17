@@ -13,7 +13,7 @@ function Form(props) {
   const getResponse = (e) => {
     e.preventDefault();
     console.log(e.target.diet.value);
-    const message = `Could you give me a recipe that has no carbon footprint? I want this recipe to focus on food near me in ${e.target.location.value} and follows these dietary requirements: ${checked}. If the recipe has any waste I want ideas for things I can make out of the waste. Could you format your response so that the title of the dish outputs first?`;
+    const message = `Could you give me a recipe that has no carbon footprint? I want this recipe to focus on food near me in ${e.target.location.value} and follows these dietary requirements: ${checked}. If the recipe has any waste I want ideas for things I can make out of the waste. Could you format your response so that the title of the dish outputs first followed by the Recipe section?`;
     props.talkToChad(message);
   };
 
