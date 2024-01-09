@@ -13,7 +13,7 @@ A single page React app that uses the OpenAI API to create "local" recipes and z
 * CSS
 
 ## Media
-
+![gif of project](./src/assets/img/chefduchad-ezgif.com-optimize.gif)
 
 #### React Component Diagram
 ![react component diagram](./src/assets/img/components.png)
